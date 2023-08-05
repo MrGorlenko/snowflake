@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* width */
+.custom-scrollbar::-webkit-scrollbar {
+	width: 14px;
+}
+
+/* Track */
+.custom-scrollbar::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px #a5a3a2;
+	border-radius: 0.5rem;
+}
+
+/* Handle */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+	background: #b17f4a;
+	border-radius: 0.5rem;
+}
+
+:root {
+	--foreground-rgb: 0, 0, 0;
+	--background-start-rgb: 214, 219, 220;
+	--background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--foreground-rgb: 255, 255, 255;
+		--background-start-rgb: 0, 0, 0;
+		--background-end-rgb: 0, 0, 0;
+	}
+}
+
+body {
+	color: rgb(var(--foreground-rgb));
+	background: linear-gradient(
+			to bottom,
+			transparent,
+			rgb(var(--background-end-rgb))
+		)
+		rgb(var(--background-start-rgb));
+}
+
+.custom-select {
+	-webkit-appearance: none;
+	background-color: transparent;
+}
+
+@font-face {
+	font-family: "RecoletaRegular";
+	src: url("../public/font/Recoleta-Regular.otf");
+}
+
+@font-face {
+	font-family: "RecoletaBold";
+	src: url("../public/font/Recoleta-Bold.ttf");
+}
+
+@font-face {
+	font-family: "FuturaBold";
+	src: url("../public/font/FuturaBold.otf");
+}
+
+@font-face {
+	font-family: "FuturaRegular";
+	src: url("../public/font/FuturaRegular.otf");
+}
