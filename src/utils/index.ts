@@ -192,3 +192,10 @@ export const introductionContentBlocks = [
 		text: " Elevate your palate with | our Handcrafted Spirits",
 	},
 ];
+
+export const gallery = [
+	{ id: 1, src: "/casestudy-01.jpg", gridClass: "row-span-2" },
+	{ id: 2, src: "/casestudy-02.jpg", gridClass: "row-span-3" },
+	{ id: 3, src: "/casestudy-03.jpg", gridClass: "row-span-3" },
+	{ id: 4, src: "/casestudy-04.jpg", gridClass: "row-span-2" },
+];
