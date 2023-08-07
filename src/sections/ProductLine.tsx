@@ -126,11 +126,49 @@ const CharacteristicCell = ({
 }) => {
 	return (
 		<div className='col-span-1 text-center'>
-			<p className='font-futura-regular text-md '>{top}</p>
-			<p className='font-recoleta-bold text-lg'>{bottom}</p>
+			<p className='font-futura-regular xs:text-md sm:text-sm xl:text-md'>
+				{top}
+			</p>
+			<p className='font-recoleta-bold xs:text-lg sm:text-md xl:text-lg'>
+				{bottom}
+			</p>
 		</div>
 	);
 };
+
+const CellsInfo = ({ receipt }: { receipt: product }): JSX.Element => (
+	<div className='grid grid-cols-3 justify-items-center gap-2'>
+		<CharacteristicCell
+			top={"Country"}
+			bottom={receipt.country}
+		></CharacteristicCell>
+
+		<CharacteristicCell
+			top={"Category"}
+			bottom={receipt.category}
+		></CharacteristicCell>
+
+		<CharacteristicCell
+			top={"Volume"}
+			bottom={receipt.volume}
+		></CharacteristicCell>
+
+		<CharacteristicCell
+			top={"Alcohol level"}
+			bottom={receipt.alcoholLevel}
+		></CharacteristicCell>
+
+		<CharacteristicCell
+			top={"Flavor"}
+			bottom={receipt.flavor}
+		></CharacteristicCell>
+
+		<CharacteristicCell
+			top={"Price"}
+			bottom={receipt.priceLabel}
+		></CharacteristicCell>
+	</div>
+);
 
 export const ProductLine: FunctionComponent = () => {
 	const [showDetails, setShowDetails] = useState(false);
@@ -239,6 +277,27 @@ export const ProductLine: FunctionComponent = () => {
 							}}
 						>
 							<Box
+								className='absolute'
+								sx={{
+									top: { md: 140, lg: 135, xl: 140 },
+									right: { md: 130, lg: 150, xl: 200 },
+									width: { md: 250, lg: 260, xl: 320 },
+								}}
+							>
+								<Typography
+									className='font-futura-regular'
+									sx={{ fontSize: { md: 13, lg: 13, xl: 15 } }}
+								>
+									{receiptToShow?.description}
+								</Typography>
+								<Box mt={2}></Box>
+								{receiptToShow ? (
+									<CellsInfo receipt={receiptToShow}></CellsInfo>
+								) : (
+									<></>
+								)}
+							</Box>
+							<Box
 								className='absolute font-futura-regular'
 								style={{ bottom: 80, right: 150 }}
 								sx={{
@@ -246,7 +305,7 @@ export const ProductLine: FunctionComponent = () => {
 									height: { xl: 125, lg: 100, md: 90 },
 								}}
 							>
-								<p>Price: {receiptToShow?.priceLabel}€</p>
+								<p>Price: {receiptToShow?.priceLabel}</p>
 								<div className='pt-5'></div>
 								<div className='flex'>
 									<BottomButtonComponentWrapper>
@@ -311,37 +370,7 @@ export const ProductLine: FunctionComponent = () => {
 						</div>
 
 						{receiptToShow ? (
-							<div className='grid grid-cols-3 justify-items-center gap-2'>
-								<CharacteristicCell
-									top={"Country"}
-									bottom={receiptToShow.country}
-								></CharacteristicCell>
-
-								<CharacteristicCell
-									top={"Category"}
-									bottom={receiptToShow.category}
-								></CharacteristicCell>
-
-								<CharacteristicCell
-									top={"Volume"}
-									bottom={receiptToShow.volume}
-								></CharacteristicCell>
-
-								<CharacteristicCell
-									top={"Alcohol level"}
-									bottom={receiptToShow.alcoholLevel}
-								></CharacteristicCell>
-
-								<CharacteristicCell
-									top={"Flavor"}
-									bottom={receiptToShow.flavor}
-								></CharacteristicCell>
-
-								<CharacteristicCell
-									top={"Price"}
-									bottom={receiptToShow.priceLabel}
-								></CharacteristicCell>
-							</div>
+							<CellsInfo receipt={receiptToShow}></CellsInfo>
 						) : (
 							<></>
 						)}

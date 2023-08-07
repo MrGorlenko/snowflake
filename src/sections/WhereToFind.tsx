@@ -107,7 +107,7 @@ const ColumnComponent = ({
 	return (
 		<Box width={"100%"}>
 			<Box sx={{ display: { xs: "none", lg: "block" } }}>
-				<Image src={imgSrc} width={402} height={450} alt={""}></Image>
+				<Image src={imgSrc} width={780} height={440} alt={""}></Image>
 			</Box>
 
 			<Box
@@ -118,21 +118,20 @@ const ColumnComponent = ({
 			</Box>
 
 			<div className='mt-3'></div>
-			<Box className='text-black' sx={{ width: { xs: "100%", lg: "410px" } }}>
-				<h3 className='font-futura-bold text-4xl lg:text-left text-center'>
-					{title}
-				</h3>
+			<Box
+				className='text-black justify-center m-auto'
+				sx={{ width: { xs: "100%", lg: "410px" } }}
+			>
+				<h3 className='font-futura-bold text-4xl  text-center'>{title}</h3>
 				<div className='mt-3'></div>
 
-				<p className='w-full font-futura-regular text-sm lg:text-left text-center'>
-					{text}
-				</p>
+				<p className='w-full font-futura-regular text-sm text-center'>{text}</p>
 				<div className='mt-3'></div>
 				<ComponentWrapper
 					sx={{
 						width: { xs: 120, lg: 150 },
 						height: { xs: 35, lg: 40 },
-						margin: { xs: "auto", lg: "initial" },
+						margin: "auto",
 					}}
 				>
 					<ButtonComponent variant='outlined' onClick={() => onClick()}>
@@ -245,7 +244,7 @@ export const WhereToFind: FunctionComponent = () => {
 				<DistanceComponent></DistanceComponent>
 
 				<div className='grid lg:grid-cols-2 grid-cols-1 justify-items-center'>
-					<div className='col-span-1'>
+					<div className='col-span-2'>
 						<ColumnComponent
 							imgSrc={"/local-market.jpg"}
 							title={"Local market"}
@@ -253,16 +252,6 @@ export const WhereToFind: FunctionComponent = () => {
 								"For our local market in Latvia, we take great pride in our connection to the land and the vibrant culture that surrounds us. Each spirit we craft embodies the rich traditions and flavors of our beautiful country."
 							}
 							onClick={() => setShowLocalMap(true)}
-						></ColumnComponent>
-					</div>
-					<div className='lg:block hidden col-span-1'>
-						<ColumnComponent
-							imgSrc={"/international-market.jpg"}
-							title={"International market"}
-							text={
-								"We are honored to present our spirits to the international market, sharing the artistry and craftsmanship of our creations with discerning drinkers worldwide"
-							}
-							onClick={() => {}}
 						></ColumnComponent>
 					</div>
 				</div>
