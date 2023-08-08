@@ -49,18 +49,14 @@ export const BurgerMenu: FunctionComponent<burgerMenu> = ({
 
 				<div className='w-11/12 m-auto'>
 					{menus.map((menu) => (
-						<>
-							<ComponentWrapper key={menu.id} sx={{ height: 60 }}>
-								<ButtonComponent
-									variant='outlined'
-									onClick={() => goToSectionHandler(menu.sectionId)}
-								>
-									{menu.label}
-								</ButtonComponent>
-							</ComponentWrapper>
-
-							<Box mt={3}></Box>
-						</>
+						<ComponentWrapper key={menu.id} sx={{ height: 60, mb: 3 }}>
+							<ButtonComponent
+								variant='outlined'
+								onClick={() => goToSectionHandler(menu.sectionId)}
+							>
+								{menu.label}
+							</ButtonComponent>
+						</ComponentWrapper>
 					))}
 					<Box mt={3}></Box>
 					<div className='grid grid-cols-2 gap-4'>

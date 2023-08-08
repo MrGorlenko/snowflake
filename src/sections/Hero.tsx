@@ -1,8 +1,11 @@
 import React, { FunctionComponent } from "react";
 import { ArrowDownIcon } from "../components/ArrowDownIcon";
 import { Box } from "@mui/material";
+import useTranslation from "next-translate/useTranslation";
 
 export const Hero: FunctionComponent = () => {
+	const { t, lang } = useTranslation("common");
+
 	return (
 		<Box
 			id={"hero"}
@@ -23,7 +26,7 @@ export const Hero: FunctionComponent = () => {
 				}}
 			>
 				<h1 className='font-recoleta-bold lg:text-9xl text-7xl m-auto'>
-					Snowflake
+					{t("Snowflake")}
 				</h1>
 				<Box mt={2}></Box>
 				<p className='font-futura-regular lg:text-2xl text-xl m-auto text-center'>
