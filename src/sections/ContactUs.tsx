@@ -18,10 +18,32 @@ const ContactComponentWrapper = ({ children }: { children: JSX.Element }) => {
 	);
 };
 
-export const ContactUs: FunctionComponent = () => {
+interface contactUs {
+	sendContactUsData({
+		name,
+		email,
+		message,
+	}: {
+		name: string;
+		email: string;
+		message: string;
+	}): void;
+}
+
+export const ContactUs: FunctionComponent<contactUs> = ({
+	sendContactUsData,
+}) => {
 	const [typeOfDistribution, setTypeOfDistribution] = useState<
 		string | number | undefined
 	>(undefined);
+
+	const [name, setName] = useState("");
+	const [email, setEmail] = useState("");
+	const [message, setMessage] = useState("");
+
+	const sentDataHandler = () => {
+		sendContactUsData({ name, email, message });
+	};
 
 	return (
 		<SectionWrapper id={"contacts"}>
@@ -44,13 +66,21 @@ export const ContactUs: FunctionComponent = () => {
 						<div className='mt-16'></div>
 
 						<ContactComponentWrapper>
-							<InputComponent placeholder='Name'></InputComponent>
+							<InputComponent
+								value={name}
+								setValue={setName}
+								placeholder='Name'
+							></InputComponent>
 						</ContactComponentWrapper>
 
 						<div className='mt-9'></div>
 
 						<ContactComponentWrapper>
-							<InputComponent placeholder='Email'></InputComponent>
+							<InputComponent
+								value={email}
+								setValue={setEmail}
+								placeholder='Email'
+							></InputComponent>
 						</ContactComponentWrapper>
 
 						<div className='mt-9'></div>
@@ -70,7 +100,11 @@ export const ContactUs: FunctionComponent = () => {
 						<div className='mt-9'></div>
 
 						<ContactComponentWrapper>
-							<InputComponent placeholder='Message'></InputComponent>
+							<InputComponent
+								value={message}
+								placeholder='Message'
+								setValue={setMessage}
+							></InputComponent>
 						</ContactComponentWrapper>
 
 						<div className='mt-9'></div>
@@ -82,7 +116,7 @@ export const ContactUs: FunctionComponent = () => {
 								margin: { xs: "auto", lg: "initial" },
 							}}
 						>
-							<ButtonComponent variant='primary' onClick={() => {}}>
+							<ButtonComponent variant='primary' onClick={sentDataHandler}>
 								Get in touch
 							</ButtonComponent>
 						</ComponentWrapper>

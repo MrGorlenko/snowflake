@@ -7,11 +7,19 @@ interface counterComponent {
 	setValue(value: number): void;
 }
 
-export const CounterComponent: FunctionComponent = () => {
+export const CounterComponent: FunctionComponent<counterComponent> = ({
+	value,
+	setValue,
+}) => {
+	const setValueHandler = (mode: "add" | "sub") => {
+		if (mode === "add") setValue(value + 1);
+		if (mode === "sub" && value > 0) setValue(value - 1);
+	};
+
 	return (
 		<div className='w-full h-full border-brown-400 rounded-lg border-2 grid grid-cols-3 items-center justify-items-center'>
 			<div className='cols-span-1 text-center'>
-				<IconButton>
+				<IconButton onClick={() => setValueHandler("sub")}>
 					<Image
 						src={"/minus-icon.svg"}
 						width={10}
@@ -21,10 +29,10 @@ export const CounterComponent: FunctionComponent = () => {
 				</IconButton>
 			</div>
 			<div className='cols-span-1  text-center'>
-				<p>1</p>
+				<p>{value}</p>
 			</div>
 			<div className='cols-span-1  text-center'>
-				<IconButton>
+				<IconButton onClick={() => setValueHandler("add")}>
 					<Image
 						src={"/plus-icon.svg"}
 						width={10}
