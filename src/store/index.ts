@@ -13,6 +13,7 @@ import {
 } from "reduxjs-toolkit-persist";
 
 import cartReducer from "../reducers/cart";
+import ageAgreedReducer from "../reducers/ageAgreed";
 
 const persistConfig = {
 	key: "snowflake",
@@ -22,6 +23,7 @@ const persistConfig = {
 
 const _persistedReducer = persistCombineReducers(persistConfig, {
 	cart: cartReducer,
+	ageAgreed: ageAgreedReducer,
 });
 
 export const store = configureStore({

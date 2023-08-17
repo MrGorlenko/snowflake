@@ -38,7 +38,7 @@ export const ItemInCartWidget = ({
 			</div>
 			<div
 				className='lg:row-span-1 ld:order-2 lg:pl-0
-			    row-span-2 col-span-3 pl-3'
+			    row-span-2 lg:col-span-2 col-span-3 pl-3'
 			>
 				<p className='font-recoleta-bold lg:text-lg text-black'>
 					{item.product.name}
@@ -49,7 +49,7 @@ export const ItemInCartWidget = ({
 			</div>
 			<div
 				className='col-span-2 row-span-1 pl-3
-					lg:justify-self-end lg:col-span-3 lg:row-span-1 lg:pl-0
+					lg:justify-self-end lg:col-span-2 lg:row-span-1 lg:pl-0
 					text-black'
 			>
 				<ComponentWrapper
@@ -62,14 +62,14 @@ export const ItemInCartWidget = ({
 				</ComponentWrapper>
 			</div>
 			<div
-				className='lg:col-span-2 lg:row-span-1 lg:order-4 
+				className='lg:col-span-1 lg:row-span-1 
 					justify-self-end'
 			>
 				<IconButton
 					sx={{
 						position: { lg: "relative", xs: "absolute" },
-						top: { xs: 50, lg: { xs: "0.75rem", lg: 0 } },
-						right: 0,
+						top: { xs: 50, lg: 0 },
+						right: { xs: "0.75rem", lg: 0 },
 					}}
 					onClick={() => removeItem(item.product.id)}
 				>
@@ -91,7 +91,7 @@ export const ItemInCartWidget = ({
 					</div>
 				</IconButton>
 			</div>
-			<div className='col-span-1 lg:row-span-1 lg:order-5 justify-self-end text-black lg:pr-0 pr-3'>
+			<div className='lg:col-span-2 col-span-1 lg:row-span-1 lg:order-5 justify-self-end text-black lg:pr-0 pr-3'>
 				<p>{setPriceString(item.price)}</p>
 			</div>
 		</div>
@@ -116,7 +116,7 @@ export const SummaryWidget = ({
 				<div className='lg:col-span-3 col-span-4 justify-self-end row-span-1 lg:pr-0 pr-3'>
 					<ComponentWrapper sx={{ width: { lg: 220 }, height: 56 }}>
 						<p className='font-futura-bold lg:text-4xl text-black text-center'>
-							{totalPrice}
+							{setPriceString(totalPrice)}
 						</p>
 					</ComponentWrapper>
 				</div>

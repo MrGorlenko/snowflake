@@ -177,6 +177,7 @@ export const DialogWithProduct = ({
 	productToShow,
 	products,
 	amount,
+	productInCart,
 	setShow,
 	setCurrentProductToShowHandler,
 	setProductToShow,
@@ -188,6 +189,7 @@ export const DialogWithProduct = ({
 	productToShow: product | null;
 	products: product[];
 	amount: number;
+	productInCart: boolean;
 	setShow(show: boolean): void;
 	setCurrentProductToShowHandler(dir: "next" | "prev"): void;
 	setProductToShow(product: product | null): void;
@@ -251,9 +253,19 @@ export const DialogWithProduct = ({
 								</BottomButtonComponentWrapper>
 								<div className='pr-5'></div>
 								<BottomButtonComponentWrapper>
-									<ButtonComponent variant='primary' onClick={addToCart}>
-										Add to cart
-									</ButtonComponent>
+									{!productInCart ? (
+										<>
+											<ButtonComponent variant='primary' onClick={addToCart}>
+												Add to cart
+											</ButtonComponent>
+										</>
+									) : (
+										<>
+											<ButtonComponent variant='primary' onClick={() => {}}>
+												Added
+											</ButtonComponent>
+										</>
+									)}
 								</BottomButtonComponentWrapper>
 							</div>
 						</Box>
@@ -319,9 +331,21 @@ export const DialogWithProduct = ({
 							></CounterComponent>
 						</Box>
 						<Box sx={{ height: 45 }}>
-							<ButtonComponent variant='primary' onClick={addToCart}>
-								Add to cart
-							</ButtonComponent>
+							<BottomButtonComponentWrapper>
+								{!productInCart ? (
+									<>
+										<ButtonComponent variant='primary' onClick={addToCart}>
+											Add to cart
+										</ButtonComponent>
+									</>
+								) : (
+									<>
+										<ButtonComponent variant='primary' onClick={() => {}}>
+											Added
+										</ButtonComponent>
+									</>
+								)}
+							</BottomButtonComponentWrapper>
 						</Box>
 						<Box className='col-span-2'>
 							<Accordion sx={{ boxShadow: "none", backgroundColor: "#F0EADC" }}>

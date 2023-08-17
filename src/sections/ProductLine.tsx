@@ -6,6 +6,7 @@ import { Box } from "@mui/material";
 import { ItemInCart, product } from "@/interface";
 
 import { DialogWithProduct } from "@/widgets/product-line";
+import { useSelector } from "react-redux";
 
 export const ProductLine: FunctionComponent<{
 	products: product[];
@@ -15,6 +16,22 @@ export const ProductLine: FunctionComponent<{
 	const [receiptToShow, setReceiptToShow] = useState<product | null>(null);
 	const [fadeIn, setFadeIn] = useState(false);
 	const [amount, setAmount] = useState(1);
+
+	const currentItemsInCart = useSelector((state: any) => state.cart.items);
+	const currentProductsId = currentItemsInCart.map(
+		(item: ItemInCart) => item.product.id
+	);
+
+	const setIsProductInCart = (): boolean => {
+		const currentId = receiptToShow?.id;
+		if (!currentId) return false;
+
+		if (currentProductsId.includes(currentId)) return true;
+
+		return false;
+	};
+
+	const currentInCart = setIsProductInCart();
 
 	const getReceiptToShowById = (receiptId: number, products: product[]) => {
 		const newReceiptToShow =
@@ -123,6 +140,7 @@ export const ProductLine: FunctionComponent<{
 				productToShow={receiptToShow}
 				products={products}
 				amount={amount}
+				productInCart={currentInCart}
 				setShow={(show) => setShowDetails(show)}
 				setCurrentProductToShowHandler={setCurrentReceiptToShowHandler}
 				setProductToShow={setReceiptToShow}

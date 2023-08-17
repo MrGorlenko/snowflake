@@ -19,6 +19,7 @@ import { GetServerSideProps } from "next";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import { WelcomeDialog } from "@/sections/WelcomeDialog";
 
 export default function Home({ products }: { products: product[] }) {
 	const dispatch = useDispatch();
@@ -68,6 +69,7 @@ export default function Home({ products }: { products: product[] }) {
 
 	return (
 		<main>
+			<WelcomeDialog></WelcomeDialog>
 			<Header
 				menus={menus}
 				langOptions={langOptions}
