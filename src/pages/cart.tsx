@@ -47,7 +47,7 @@ export default function Cart() {
 	const createOrderItemRequest = (item: ItemInCartToPost) => {
 		return new Promise((resolve, reject) =>
 			axios
-				.post(`http://127.0.0.1:8000/order-item/`, item)
+				.post(`http://bo.snowflake.club/order-item/`, item)
 				.then((response) => resolve(response))
 				.catch((error) => reject(error))
 		);
@@ -56,7 +56,7 @@ export default function Cart() {
 	const createOrderRequest = (productsId: number[]) => {
 		return new Promise((resolve, reject) =>
 			axios
-				.post(`http://127.0.0.1:8000/order/`, { products: productsId })
+				.post(`http://bo.snowflake.club/order/`, { products: productsId })
 				.then((response) => resolve(response))
 				.catch((error) => reject(error))
 		);
