@@ -63,8 +63,7 @@ export const gallery = [
 
 export const langOptions = [
 	{ id: 1, name: "EN-US", locale: "en" },
-	{ id: 2, name: "RU", locale: "ru" },
-	{ id: 3, name: "LV", locale: "lv" },
+	{ id: 2, name: "LV", locale: "lv" },
 ];
 
 export const setPriceString = (price: number) => {

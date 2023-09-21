@@ -25,8 +25,9 @@ export const Hero: FunctionComponent = () => {
 					},
 				}}
 			>
+				{/* {t("Snowflake")} */}
 				<h1 className='font-recoleta-bold lg:text-9xl text-7xl m-auto'>
-					{t("Snowflake")}
+					Snowflake
 				</h1>
 				<Box mt={2}></Box>
 				<p className='font-futura-regular lg:text-2xl text-xl m-auto text-center'>
