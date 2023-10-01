@@ -90,8 +90,10 @@ export const ContactUs: FunctionComponent<contactUs> = ({
 								value={typeOfDistribution}
 								placeholder='Type of distribution'
 								options={[
-									{ id: 1, text: "abc" },
-									{ id: 2, text: "xyz" },
+									{ id: 1, text: "Exclusive" },
+									{ id: 2, text: "Selective" },
+									{ id: 3, text: "Intensive" },
+									{ id: 4, text: "Other" },
 								]}
 								onChange={(value) => setTypeOfDistribution(value)}
 							></SelectComponent>
