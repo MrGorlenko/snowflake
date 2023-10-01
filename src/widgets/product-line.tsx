@@ -15,6 +15,7 @@ import { ArrowDownIcon } from "@/components/ArrowDownIcon";
 import { CounterComponent } from "@/components/CounterComponent";
 import { DistanceComponent } from "@/components/DistanceComponent";
 import { setPriceString } from "@/utils";
+import { useState } from "react";
 
 export const BottomButtonComponentWrapper = ({
 	children,
@@ -196,6 +197,8 @@ export const DialogWithProduct = ({
 	setAmount(amount: number): void;
 	addToCart(): void;
 }) => {
+	const [expandText, setExpandText] = useState(false);
+
 	return (
 		<DialogComponent open={show} setOpen={(open) => setShow(open)}>
 			<>
@@ -221,15 +224,51 @@ export const DialogWithProduct = ({
 								width: { md: 250, lg: 260, xl: 320 },
 							}}
 						>
-							<Typography
-								className='font-futura-regular'
-								sx={{ fontSize: { md: 13, lg: 13, xl: 15 } }}
+							{/*  */}
+							<Box
+								onClick={() => {
+									if (
+										productToShow?.description &&
+										productToShow?.description.length < 380
+									)
+										return;
+									setExpandText(!expandText);
+								}}
 							>
-								{productToShow?.description}
-							</Typography>
+								<Typography
+									className='font-futura-regular'
+									sx={{ fontSize: { md: 13, lg: 13, xl: 15 } }}
+								>
+									{productToShow?.description &&
+									productToShow?.description.length > 380 &&
+									!expandText
+										? productToShow.description.slice(0, 380) + "..."
+										: productToShow?.description}
+								</Typography>
+							</Box>
 							<Box mt={2}></Box>
-							{productToShow ? (
-								<CellsInfo receipt={productToShow}></CellsInfo>
+							{productToShow && !expandText ? (
+								<Box sx={{ width: 320 }}>
+									<CellsInfo receipt={productToShow}></CellsInfo>
+								</Box>
+							) : (
+								<></>
+							)}
+							{expandText ? (
+								<>
+									<Box
+										sx={{
+											width: 300,
+											color: "primary",
+											textDecoration: "underline",
+											cursor: "pointer",
+										}}
+										className={"text-brown-400"}
+										onClick={() => setExpandText(!expandText)}
+									>
+										Back
+									</Box>
+								</>
 							) : (
 								<></>
 							)}
@@ -239,7 +278,7 @@ export const DialogWithProduct = ({
 							style={{ bottom: 80, right: 150 }}
 							sx={{
 								width: { xl: 370, lg: 259, md: 210 },
-								height: { xl: 125, lg: 100, md: 90 },
+								height: { xl: 125, lg: 100, md: 80 },
 							}}
 						>
 							<p>Price: {setPriceString(productToShow?.price || 0)}</p>
