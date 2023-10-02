@@ -55,7 +55,7 @@ export default function Home({ products }: { products: product[] }) {
 	}) => {
 		try {
 			const sendDataResponse = await axios.post(
-				"http://bo.snowflake.club/contact-us/",
+				"https://bo.snowflake.club/contact-us/",
 				{ name, email, message }
 			);
 
@@ -102,7 +102,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
 	try {
 		const productsResponse: any = await axios.get(
-			"http://bo.snowflake.club/products/"
+			"https://bo.snowflake.club/products/"
 		);
 
 		products = productsResponse.data;
