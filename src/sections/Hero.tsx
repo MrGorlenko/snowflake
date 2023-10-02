@@ -26,11 +26,11 @@ export const Hero: FunctionComponent = () => {
 				}}
 			>
 				{/* {t("Snowflake")} */}
-				<h1 className='font-recoleta-bold lg:text-9xl text-7xl m-auto'>
+				<h1 className='font-recoleta-bold lg:text-9xl text-7xl m-auto text-white'>
 					Snowflake
 				</h1>
 				<Box mt={2}></Box>
-				<p className='font-futura-regular lg:text-2xl text-xl m-auto text-center'>
+				<p className='font-futura-regular lg:text-2xl text-xl m-auto text-center text-white'>
 					Discover a world of exceptional spirits
 					<br className='lg:hidden'></br> a on our online
 					<br className='lg:block hidden'></br>
@@ -41,7 +41,7 @@ export const Hero: FunctionComponent = () => {
 				<div className='mb-24'></div>
 				<div className='mb-4'></div>
 
-				<p className='font-futura-regular lg:text-2xl text-xl m-auto text-center opacity-70'>
+				<p className='font-futura-regular lg:text-2xl text-xl m-auto text-center opacity-70 text-white'>
 					Keep scrolling
 				</p>
 				<div className='mb-2'></div>

@@ -55,14 +55,14 @@ export const Footer: FunctionComponent<footer> = ({ menus, goToSection }) => {
 					</div>
 				</div>
 				<div className='lg:col-span-2'>
-					<h3 className='font-futura-bold text-2xl'>Contacts</h3>
+					<h3 className='font-futura-bold text-2xl text-gray'>Contacts</h3>
 					<div className='mt-2'></div>
 					<div className='grid grid-cols-2'>
 						<div>
 							<p className='font-futura-regular text-sm text-gray opacity-70'>
 								Address:
 							</p>
-							<p>
+							<p className='text-gray'>
 								Mārkalnes iela 10, <br /> Rīga, LV-1024 <br /> Latvija
 							</p>
 						</div>
@@ -70,12 +70,16 @@ export const Footer: FunctionComponent<footer> = ({ menus, goToSection }) => {
 							<p className='font-futura-regular text-sm text-gray opacity-70'>
 								Phone:
 							</p>
-							<a href='tel:+371 26 384 384'>+371 26 384 384</a>
+							<a className='text-gray' href='tel:+371 26 384 384'>
+								+371 26 384 384
+							</a>
 
 							<p className='font-futura-regular text-sm text-gray opacity-70'>
 								Email:
 							</p>
-							<a href='mailto:info@snowflake.club'>info@snowflake.club</a>
+							<a href='mailto:info@snowflake.club text-gray'>
+								info@snowflake.club
+							</a>
 						</div>
 					</div>
 				</div>
